@@ -10,51 +10,55 @@ use Illuminate\Support\Str;
 class IndexController extends Controller
 {
 
-    public function index()
-    {
-      $products = Product::all();
+  public function index()
+  {
+    $products = Product::all();
 
-      return view('products.index', compact('products'));
+    return view('products.index', compact('products'));
+  }
+
+  public function create()
+  {
+    return view('products.create');
+  }
+
+  public function store(Request $request)
+  {
+    $data         = $request->all();
+    $data['slug'] = Str::slug($data['title']);
+
+    if ($request->hasFile('preview_image')) {
+      $preview_image         = $request->file('preview_image')->store('uploads', 'public');
+      $data['preview_image'] = 'storage/'.$preview_image;
     }
+    Product::create($data);
 
-    public function create()
-    {
-      return view('products.create');
-    }
+    return redirect()->route('products.index');
+  }
 
-    public function store(Request $request)
-    {
-      $data = $request->all();
-      $data['slug'] = Str::slug($data['title']);
+  public function show(Product $product)
+  {
+    return view('products.show', compact('product'));
+  }
 
-      Product::create($data);
+  public function edit(Product $product)
+  {
+    return view('products.edit', compact('product'));
+  }
 
-      return redirect()->route('products.index');
-    }
+  public function update(Request $request, Product $product)
+  {
+    $data         = $request->all();
+    $data['slug'] = Str::slug($data['title']);
+    $product->update($data);
 
-    public function show(Product $product)
-    {
-      return view('products.show', compact('product'));
-    }
+    return redirect()->route('products.index');
+  }
 
-    public function edit(Product $product)
-    {
-      return view('products.edit', compact('product'));
-    }
+  public function destroy(Product $product)
+  {
+    $product->delete();
 
-    public function update(Request $request, Product $product)
-    {
-      $data = $request->all();
-      $data['slug'] = Str::slug($data['title']);
-      $product->update($data);
-
-      return redirect()->route('products.index');
-    }
-
-    public function destroy(Product $product)
-    {
-      $product->delete();
-
-      return redirect()->route('products.index');
-    }
+    return redirect()->route('products.index');
+  }
 }

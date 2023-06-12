@@ -44,7 +44,7 @@
                   @forelse($colors as $color)
                     <tr>
                       <td>{{ $color->id }}</td>
-                      <td class="d-flex align-items-center">{{ $color->title }} <div style="width: 16px; margin-left: 10px; height: 16px; background: {{ '#' . $color->title }}"></div></td>
+                      <td class="d-flex align-items-center">{{ $color->title }} <div style="width: 16px; margin-left: 10px; height: 16px; background: {{ $color->title }}"></div></td>
                       <td>{{ $color->created_at }}</td>
                       <td class="d-flex">
                         <a href="{{ route('colors.show', $color->id) }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>

@@ -35,6 +35,7 @@
                   <thead>
                   <tr>
                     <th>ID</th>
+                    <th>Изоброжения</th>
                     <th>Название</th>
                     <th>Цена</th>
                     <th>Количество</th>
@@ -48,6 +49,9 @@
                   @forelse($products as $product)
                     <tr>
                       <td>{{ $product->id }}</td>
+                      <td>
+                        <img src="{{ asset(  $product->preview_image ) }}" alt="Product image" class="img-responsive" style="width: 100px; height: 100px">
+                      </td>
                       <td>{{ $product->title }}</td>
                       <td>{{ $product->price }}</td>
                       <td>{{ $product->quantity }}</td>
@@ -66,7 +70,7 @@
                     </tr>
                   @empty
                    <tr>
-                     <td colspan="5"> <h2 class="text-center">Пусто...</h2> </td>
+                     <td colspan="12"> <h2 class="text-center">Пусто...</h2> </td>
                    </tr>
                   @endforelse
 
