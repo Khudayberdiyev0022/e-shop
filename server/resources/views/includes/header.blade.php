@@ -134,7 +134,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{ route('categories.index') }}" class="nav-link">
             <i class="nav-icon fas fa-tasks"></i>
             <p>
               Категории
@@ -142,7 +142,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{ route('tags.index') }}" class="nav-link">
             <i class="nav-icon fas fa-tags"></i>
             <p>
               Теги
@@ -150,7 +150,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{ route('colors.index') }}" class="nav-link">
             <i class="nav-icon fas fa-palette"></i>
             <p>
               Цвета
