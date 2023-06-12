@@ -35,8 +35,32 @@
                   @method('PUT')
                   <div class="form-group">
                     <label>Название</label>
-                    <input type="text" name="title" class="form-control" value="{{ $product->title ?? '' }}" />
+                    <input type="text" name="title" class="form-control" value="{{ $product->title ?? '' }}"/>
                   </div>
+                  <div class="form-group">
+                    <label>Описание</label>
+                    <input type="text" name="description" class="form-control" value="{{ $product->description ?? '' }}"/>
+                  </div>
+                  <div class="form-group">
+                    <label>Контент</label>
+                    <textarea name="content" class="form-control">value="{{ $product->content ?? '' }}"</textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>Цена</label>
+                    <input type="text" name="price" class="form-control" value="{{ $product->price ?? '' }}"/>
+                  </div>
+                  <div class="form-group">
+                    <label>Количество</label>
+                    <input type="text" name="quantity" class="form-control" value="{{ $product->quantity ?? '' }}"/>
+                  </div>
+                  <div class="form-group">
+                    <label class="custom-switch mt-2 pl-0">
+                      <input type="checkbox" name="is_published" value="1" {{ $product->is_published == 1 ? 'checked' : '' }}  class="custom-switch-input">
+                      <span class="custom-switch-indicator"></span>
+                      <span class="custom-switch-description">Публиковать ?</span>
+                    </label>
+                  </div>
+
                   <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Сохранить</button>
                   </div>
