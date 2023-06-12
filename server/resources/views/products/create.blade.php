@@ -30,7 +30,7 @@
                 </div>
               </div>
               <div class="card-body">
-                <form action="{{ route('products.store') }}" method="POST">
+                <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <div class="form-group">
                     <label>Название</label>
@@ -52,10 +52,60 @@
                     <label>Количество</label>
                     <input type="text" name="quantity" class="form-control" />
                   </div>
-                  <select name="is_published">
-                    <option value="0">Публиковать</option>
-                    <option value="1">Не публиковать</option>
-                  </select>
+                  <div class="form-group">
+                    <label for="exampleInputFile">Загрузить изоброжения</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="preview_image" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Загрузить</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label>Категории</label>
+                        <select name="category_id" class="categories form-control select2 select2-purple select2-hidden-accessible" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                          <option selected disabled value="0">Выберите категорию</option>
+                          <option value="1">Alaska</option>
+                          <option value="2">California</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label>Теги</label>
+                        <div class="select2-purple">
+                          <select name="tag_id[]" class="tags select2-hidden-accessible" multiple data-placeholder="Выберите тег" data-dropdown-css-class="select2-purple" style="width: 100%">
+                            <option value="1">Alabama</option>
+                            <option value="2">Alaska</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label>Цвета</label>
+                        <div class="select2-purple">
+                          <select name="color_id[]" class="colors select2-hidden-accessible" multiple data-placeholder="Выберите цвета" data-dropdown-css-class="select2-purple" style="width: 100%;" >
+                            <option value="1">Alabama</option>
+                            <option value="2">Alaska</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <div class="icheck-purple d-inline">
+                      <input type="checkbox" name="is_published" value="1" {{ old('is_published') == 1 ? 'checked' : '' }} id="checkboxPrimary1"  >
+                      <label for="checkboxPrimary1">
+                        Публиковать ?
+                      </label>
+                    </div>
+                  </div>
                   <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Сохранить</button>
                   </div>

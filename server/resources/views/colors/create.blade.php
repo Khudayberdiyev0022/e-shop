@@ -33,8 +33,16 @@
                 <form action="{{ route('colors.store') }}" method="POST">
                   @csrf
                   <div class="form-group">
-                    <label>Название</label>
-                    <input type="text" name="title" class="form-control" />
+                    <label>Выберите цвет из палитры</label>
+
+                    <div class="input-group my-colorpicker2 colorpicker-element" data-colorpicker-id="2">
+                      <input type="text" class="form-control" name="title"  data-original-title="" title="" aria-describedby="popover117410">
+
+                      <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-square" style="color: rgb(192, 118, 118);"></i></span>
+                      </div>
+                    </div>
+                    <!-- /.input group -->
                   </div>
                   <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Сохранить</button>
