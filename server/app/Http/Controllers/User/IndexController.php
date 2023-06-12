@@ -3,43 +3,72 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
 
-    public function index()
-    {
-      return view('users.index');
-    }
+  public function index()
+  {
+    $users = User::all();
 
-    public function create()
-    {
-        //
-    }
+    return view('users.index', compact('users'));
+  }
 
-    public function store(Request $request)
-    {
-        //
-    }
+  public function create()
+  {
+    return view('users.create');
+  }
 
-    public function show($id)
-    {
-        //
-    }
+  public function store(Request $request)
+  {
+    $data = $request->validate([
+      'firstname' => 'required|string',
+      'lastname'  => 'required|string',
+      'address'   => 'string',
+      'gender'    => 'required|integer',
+      'phone'     => 'string',
+      'email'     => 'required|email|unique:users,email',
+      'password'  => 'required|confirmed',
+    ]);
 
-    public function edit($id)
-    {
-        //
-    }
+    User::firstOrCreate([
+      'email' => $data['email'],
+    ], $data);
 
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    return redirect()->route('users.index');
+  }
 
-    public function destroy($id)
-    {
-        //
-    }
+  public function show(User $user)
+  {
+    return view('users.show', compact('user'));
+  }
+
+  public function edit(User $user)
+  {
+    return view('users.edit', compact('user'));
+  }
+
+  public function update(Request $request, User $user)
+  {
+    $data = $request->validate([
+      'firstname' => 'required|string',
+      'lastname'  => 'required|string',
+      'address'   => 'string',
+      'gender'    => 'required|integer',
+      'phone'     => 'string',
+      'email'     => 'required|email|unique:users,email',
+    ]);
+    $user->update($data);
+
+    return redirect()->route('users.index');
+  }
+
+  public function destroy(User $user)
+  {
+    $user->delete();
+
+    return redirect()->route('users.index');
+  }
 }
