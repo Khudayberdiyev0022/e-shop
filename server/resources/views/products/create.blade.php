@@ -37,25 +37,25 @@
                     <input type="text" name="title" class="form-control" />
                   </div>
                   <div class="form-group">
-                    <label>Название</label>
+                    <label>Описание</label>
                     <input type="text" name="description" class="form-control" />
                   </div>
                   <div class="form-group">
-                    <label>Название</label>
-                    <input type="text" name="content" class="form-control" />
+                    <label>Контент</label>
+                    <textarea name="content" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
-                    <label>Название</label>
+                    <label>Цена</label>
                     <input type="text" name="price" class="form-control" />
                   </div>
                   <div class="form-group">
-                    <label>Название</label>
+                    <label>Количество</label>
                     <input type="text" name="quantity" class="form-control" />
                   </div>
-                  <div class="form-group">
-                    <label>Название</label>
-                    <input type="text" name="quantity" class="form-control" />
-                  </div>
+                  <select name="is_published">
+                    <option value="0">Публиковать</option>
+                    <option value="1">Не публиковать</option>
+                  </select>
                   <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Сохранить</button>
                   </div>

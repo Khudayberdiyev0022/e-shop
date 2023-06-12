@@ -36,7 +36,10 @@
                   <tr>
                     <th>ID</th>
                     <th>Название</th>
-                    <th>ЧПУ</th>
+                    <th>Цена</th>
+                    <th>Количество</th>
+                    <th>Статус</th>
+                    <th>Просмотр</th>
                     <th>Дата создания</th>
                     <th>Действия</th>
                   </tr>
@@ -46,7 +49,10 @@
                     <tr>
                       <td>{{ $product->id }}</td>
                       <td>{{ $product->title }}</td>
-                      <td>{{ $product->slug }}</td>
+                      <td>{{ $product->price }}</td>
+                      <td>{{ $product->quantity }}</td>
+                      <td>{{ $product->is_published }}</td>
+                      <td>{{ $product->views }}</td>
                       <td>{{ $product->created_at }}</td>
                       <td class="d-flex">
                         <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
