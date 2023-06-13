@@ -13,7 +13,17 @@ import MyHeader from "@/components/app/MyHeader.vue";
 import MyFooter from "@/components/app/MyFooter.vue";
 
 export default {
-  components: {MyFooter, MyHeader}
+  components: {MyFooter, MyHeader},
+    // main.js
+  mounted() {
+    this.onChangeJquery();
+  },
+  methods: {
+    onChangeJquery() {
+      $(document).trigger('change');
+    }
+  },
+
 
 }
 </script>
