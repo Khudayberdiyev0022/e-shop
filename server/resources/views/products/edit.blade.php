@@ -74,8 +74,9 @@
                         <label>Категории</label>
                         <select name="category_id" class="categories form-control select2 select2-purple select2-hidden-accessible" data-dropdown-css-class="select2-purple" style="width: 100%;">
                           <option selected disabled value="0">Выберите категорию</option>
-                          <option value="1">Alaska</option>
-                          <option value="2">California</option>
+                          @foreach($categories as $category)
+                            <option @if($product->category_id == $category->id) selected @endif value="{{ $category->id ?? '' }}">{{ $category->title ?? '' }}</option>
+                          @endforeach
                         </select>
                       </div>
                     </div>
@@ -83,9 +84,10 @@
                       <div class="form-group">
                         <label>Теги</label>
                         <div class="select2-purple">
-                          <select name="tag_id[]" class="tags select2-hidden-accessible" multiple data-placeholder="Выберите тег" data-dropdown-css-class="select2-purple" style="width: 100%">
-                            <option value="1">Alabama</option>
-                            <option value="2">Alaska</option>
+                          <select name="tags[]" class="tags select2-hidden-accessible" multiple data-placeholder="Выберите тег" data-dropdown-css-class="select2-purple" style="width: 100%">
+                            @foreach($tags as $tag)
+                              <option @if(in_array($tag->id, $product->tags->pluck('id')->toArray())) selected @endif value="{{ $tag->id }}">{{ $tag->title ?? '' }}</option>
+                            @endforeach
                           </select>
                         </div>
                       </div>
@@ -94,9 +96,10 @@
                       <div class="form-group">
                         <label>Цвета</label>
                         <div class="select2-purple">
-                          <select name="color_id[]" class="colors select2-hidden-accessible" multiple data-placeholder="Выберите цвета" data-dropdown-css-class="select2-purple" style="width: 100%;" >
-                            <option value="1">Alabama</option>
-                            <option value="2">Alaska</option>
+                          <select name="colors[]" class="colors select2-hidden-accessible" multiple data-placeholder="Выберите цвета" data-dropdown-css-class="select2-purple" style="width: 100%;" >
+                            @foreach($colors as $color)
+                              <option @if(in_array($color->id, $product->colors->pluck('id')->toArray())) selected @endif value="{{ $color->id }}">{{ $color->title ?? ''}}</option>
+                            @endforeach
                           </select>
                         </div>
                       </div>

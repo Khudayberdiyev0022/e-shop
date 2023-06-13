@@ -48,14 +48,18 @@
                   <tbody>
                   @forelse($products as $product)
                     <tr>
-                      <td>{{ $product->id }}</td>
+                      <td>{{ $loop->iteration }}</td>
                       <td>
+                        @if($product->preview_image)
                         <img src="{{ asset(  $product->preview_image ) }}" alt="Product image" class="img-responsive" style="width: 100px; height: 100px">
+                        @else
+                          <p>Без изоброжения</p>
+                        @endif
                       </td>
                       <td>{{ $product->title }}</td>
                       <td>{{ $product->price }}</td>
                       <td>{{ $product->quantity }}</td>
-                      <td>{{ $product->is_published }}</td>
+                      <td>{{ $product->is_published == 1 ? 'Публиковано' : 'Не опубликовано' }}</td>
                       <td>{{ $product->views }}</td>
                       <td>{{ $product->created_at }}</td>
                       <td class="d-flex">
