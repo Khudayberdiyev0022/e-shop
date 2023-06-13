@@ -223,12 +223,15 @@
                     <div class="row">
                       <div class="col-xl-4 col-lg-6 col-6 " v-for="product in products">
                         <div class="products-three-single w-100  mt-30">
-                          <div class="products-three-single-img"><a
-                              href="shop-details-3.html" class="d-block"> <img
-                              src="src/assets/images/home-three/productss2-1.jpg"
-                              class="first-img" alt=""/> <img
-                              src="src/assets/images/home-three/productss2-hover-1.png"
-                              alt="" class="hover-img"/>
+                          <div class="products-three-single-img">
+                            <a href="shop-details-3.html" class="d-block">
+                              <div v-if="product.image_url">
+                              <img :src="product.image_url" class="first-img" alt=""/>
+                              </div>
+                              <div v-else>
+                              <img src="src/assets/images/home-three/productss2-1.jpg" class="first-img" alt=""/>
+                              </div>
+                              <img src="src/assets/images/home-three/productss2-hover-1.png"  alt="" class="hover-img"/>
                           </a>
                             <div class="products-grid-one__badge-box"> <span
                                 class="bg_base badge new "></span>
@@ -370,7 +373,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="products-three-single-content text-center"> <span>{{ product.category_id }}</span>
+                          <div class="products-three-single-content text-center"> <span>{{ product?.category?.title }}</span>
                             <h5><a href="shop-details-3.html">{{ product.title }}</a>
                             </h5>
                             <p>

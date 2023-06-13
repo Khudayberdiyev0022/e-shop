@@ -12,8 +12,8 @@ class ProductController extends Controller
 
   public function index()
   {
-    $products = Product::all();
-
+    $products = Product::where('is_published', 1)->get();
+//    dd(ProductResource::collection($products));
     return ProductResource::collection($products);
   }
 
