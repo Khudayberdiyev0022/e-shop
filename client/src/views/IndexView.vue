@@ -2543,7 +2543,11 @@
 
 <script>
 export default {
-  name: "IndexView"
+  name: "IndexView",
+  mounted() {
+    // assets/js/main.js
+    $(document).trigger('change');
+  }
 }
 </script>
 
