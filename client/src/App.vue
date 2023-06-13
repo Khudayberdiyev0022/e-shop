@@ -16,12 +16,11 @@ export default {
   components: {MyFooter, MyHeader},
     // main.js
   mounted() {
-    this.onChangeJquery();
+    $(document).trigger("change");
+
   },
   methods: {
-    onChangeJquery() {
-      $(document).trigger('change');
-    }
+
   },
 
 

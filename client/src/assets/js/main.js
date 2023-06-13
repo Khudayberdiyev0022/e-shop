@@ -1,7 +1,7 @@
 jQuery(function ($) {
     'use strict';
 //   document ready ni orniga on change bu spa bogani ucun xar safar page reload boganda ishlashi uchun
-    $(document).on('change', function () {
+    $(document).ready(function () {
         /****======  Sticky Header ======*******/
         var scrollPosition = window.scrollY;
         if (scrollPosition >= 400) {
@@ -114,7 +114,6 @@ jQuery(function ($) {
             });
         }
         ;
-
 
         /****======  banner-one__slider Slick  ======*******/
         $(".slick").slick({

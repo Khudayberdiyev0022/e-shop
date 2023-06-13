@@ -2545,7 +2545,7 @@
 export default {
   name: "IndexView",
   mounted() {
-    // assets/js/main.js
+    // main.js
     $(document).trigger('change');
   }
 }
