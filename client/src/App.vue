@@ -7,26 +7,17 @@
 </template>
 
 <script>
-
-
 import MyHeader from "@/components/app/MyHeader.vue";
 import MyFooter from "@/components/app/MyFooter.vue";
 
 export default {
-  components: {MyFooter, MyHeader},
-    // main.js
+  components: { MyFooter, MyHeader },
+  // main.js
   mounted() {
     $(document).trigger("change");
-
   },
-  methods: {
-
-  },
-
-
-}
+  methods: {},
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
