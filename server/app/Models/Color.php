@@ -12,7 +12,7 @@ class Color extends Model
   protected $table    = 'colors';
   protected $fillable = ['title', 'hex_code'];
 
-  public function product()
+  public function products()
   {
     return $this->belongsToMany(Product::class, 'color_product');
   }

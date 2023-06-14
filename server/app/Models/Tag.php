@@ -13,7 +13,7 @@ class Tag extends Model
   protected $table    = 'tags';
   protected $fillable = ['title', 'slug'];
 
-  public function product()
+  public function products()
   {
     return $this->belongsToMany(Product::class, 'product_tag');
   }

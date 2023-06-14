@@ -19,6 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware(['api', 'cors'])->group(function () {
-  Route::apiResource('products', \App\Http\Controllers\Api\ProductController::class);
   Route::apiResource('categories', \App\Http\Controllers\Api\CategoryController::class);
+  Route::apiResource('colors', \App\Http\Controllers\Api\ColorController::class);
+  Route::apiResource('products', \App\Http\Controllers\Api\ProductController::class);
 });
