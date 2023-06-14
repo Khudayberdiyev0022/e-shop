@@ -24,10 +24,10 @@ class IndexController extends Controller
 
   public function store(Request $request)
   {
-    $data         = $request->validate([
+    $data = $request->validate([
       'title' => 'required|string',
     ]);
-    $data['slug'] = Str::slug($data['title']);
+//    $data['slug'] = Str::slug($data['title']);
 
     Category::firstOrCreate($data);
 
@@ -46,10 +46,10 @@ class IndexController extends Controller
 
   public function update(Request $request, Category $category)
   {
-    $data         = $request->validate([
+    $data = $request->validate([
       'title' => 'required|string',
     ]);
-    $data['slug'] = Str::slug($data['title']);
+//    $data['slug'] = Str::slug($data['title']);
 
     $category->update($data);
 
