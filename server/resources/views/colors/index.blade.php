@@ -24,10 +24,10 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-               <div class="d-flex justify-content-between align-items-center">
-                 <h3 class="card-title">Список</h3>
-                 <a href="{{ route('colors.create') }}" class="btn btn-primary">Создать</a>
-               </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <h3 class="card-title">Список</h3>
+                  <a href="{{ route('colors.create') }}" class="btn btn-primary">Создать</a>
+                </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
@@ -36,6 +36,8 @@
                   <tr>
                     <th>ID</th>
                     <th>Название</th>
+                    <th>Код цвета</th>
+                    <th>Просмотр цвета</th>
                     <th>Дата создания</th>
                     <th>Действия</th>
                   </tr>
@@ -44,7 +46,11 @@
                   @forelse($colors as $color)
                     <tr>
                       <td>{{ $color->id }}</td>
-                      <td class="d-flex align-items-center">{{ $color->title }} <div style="width: 16px; margin-left: 10px; height: 16px; background: {{ $color->title }}"></div></td>
+                      <td>{{ $color->title }} </td>
+                      <td>{{ $color->hex_code }}</td>
+                      <td>
+                        <div style="width: 16px; margin-left: 10px; height: 16px; background: {{ $color->hex_code }}"></div>
+                      </td>
                       <td>{{ $color->created_at }}</td>
                       <td class="d-flex">
                         <a href="{{ route('colors.show', $color->id) }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
@@ -57,9 +63,9 @@
                       </td>
                     </tr>
                   @empty
-                   <tr>
-                     <td colspan="5"> <h2 class="text-center">Пусто...</h2> </td>
-                   </tr>
+                    <tr>
+                      <td colspan="5"><h2 class="text-center">Пусто...</h2></td>
+                    </tr>
                   @endforelse
 
                   </tbody>
