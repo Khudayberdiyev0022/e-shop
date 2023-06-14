@@ -142,6 +142,14 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{ route('groups.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-layer-group"></i>
+            <p>
+              Группы
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ route('tags.index') }}" class="nav-link">
             <i class="nav-icon fas fa-tags"></i>
             <p>

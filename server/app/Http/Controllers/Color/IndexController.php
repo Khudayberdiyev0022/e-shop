@@ -24,7 +24,8 @@ class IndexController extends Controller
   public function store(Request $request)
   {
     $data = $request->validate([
-      'title' => ['required', 'regex:/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/'],
+      'title'    => 'required|string',
+      'hex_code' => ['required', 'regex:/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/'],
     ]);
 
     Color::firstOrCreate($data);
@@ -45,7 +46,8 @@ class IndexController extends Controller
   public function update(Request $request, Color $color)
   {
     $data = $request->validate([
-      'title' => ['required', 'regex:/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/'],
+      'title'    => 'required|string',
+      'hex_code' => ['required', 'regex:/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/'],
     ]);
     $color->update($data);
 
