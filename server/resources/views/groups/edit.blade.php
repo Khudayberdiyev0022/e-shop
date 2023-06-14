@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Цвета</h1>
+            <h1 class="m-0">Группы</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="nav-icon fas fa-home"></i></a></li>
-              <li class="breadcrumb-item active">Цвета</li>
+              <li class="breadcrumb-item active">Группы</li>
             </ol>
           </div>
         </div>
@@ -30,16 +30,12 @@
                 </div>
               </div>
               <div class="card-body">
-                <form action="{{ route('colors.update', $color->id) }}" method="POST">
+                <form action="{{ route('groups.update', $group->id) }}" method="POST">
                   @csrf
                   @method('PUT')
                   <div class="form-group">
                     <label>Название</label>
-                    <input type="text" name="title" class="form-control" value="{{ $color->title ?? '' }}"/>
-                  </div>
-                  <div class="form-group">
-                    <label>Название</label>
-                    <input type="text" name="hex_code" class="form-control" value="{{ $color->hex_code ?? '' }}"/>
+                    <input type="text" name="title" class="form-control" value="{{ $group->title ?? '' }}"/>
                   </div>
                   <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Сохранить</button>

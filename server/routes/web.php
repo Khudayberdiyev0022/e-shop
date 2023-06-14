@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('home');
 Route::resource('users', \App\Http\Controllers\User\IndexController::class);
 Route::resource('categories', \App\Http\Controllers\Category\IndexController::class);
+Route::resource('groups', \App\Http\Controllers\Group\IndexController::class);
 Route::resource('tags', \App\Http\Controllers\Tag\IndexController::class);
 Route::resource('colors', \App\Http\Controllers\Color\IndexController::class);
 Route::resource('products', \App\Http\Controllers\Product\IndexController::class);

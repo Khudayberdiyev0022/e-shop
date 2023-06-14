@@ -35,8 +35,11 @@
                   <div class="form-group">
                     <label>Выберите цвет из палитры</label>
 
+                    <div class="input-group ">
+                      <input type="text" class="form-control" name="title">
+                    </div>
                     <div class="input-group my-colorpicker2 colorpicker-element" data-colorpicker-id="2">
-                      <input type="text" class="form-control" name="title"  data-original-title="" title="" aria-describedby="popover117410">
+                      <input type="text" class="form-control" name="hex_code" data-original-title="" title="" aria-describedby="popover117410">
 
                       <div class="input-group-append">
                         <span class="input-group-text"><i class="fas fa-square" style="color: rgb(192, 118, 118);"></i></span>
