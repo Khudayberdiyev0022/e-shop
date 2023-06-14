@@ -12,7 +12,17 @@ class CategoryController extends Controller
 
   public function index()
   {
-    $categories = Category::with('products')->whereRelation('products', 'is_published', '=', 1)->get();
+//    $categories = Category::with('products')->whereRelation('products', 'is_published', '=', 1)->get();
+//
+//    $categories = Category::whereHas('products', function ($query) {
+//      return $query->where('is_published', '=', 1);
+//    })->get();
+
+    $categories = Category::with([
+      "products" => function ($q) {
+        $q->where('products.is_published', '=', 1);
+      },
+    ])->get();
 
     return CategoryResource::collection($categories);
   }
