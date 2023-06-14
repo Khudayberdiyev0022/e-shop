@@ -9,7 +9,8 @@ class ColorProduct extends Model
 {
   use HasFactory;
 
-  protected $table = 'color_product';
-  protected $fillable = ['color_id', 'product_id'];
-  public $timestamps = false;
+  // Faker uchun bu model
+  protected $table      = 'color_product';
+  protected $fillable   = ['color_id', 'product_id'];
+  public    $timestamps = false;
 }

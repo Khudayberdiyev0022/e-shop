@@ -24,10 +24,10 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-               <div class="d-flex justify-content-between align-items-center">
-                 <h3 class="card-title">Список</h3>
-                 <a href="{{ route('products.create') }}" class="btn btn-primary">Создать</a>
-               </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <h3 class="card-title">Список</h3>
+                  <a href="{{ route('products.create') }}" class="btn btn-primary">Создать</a>
+                </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
@@ -51,7 +51,7 @@
                       <td>{{ $loop->iteration }}</td>
                       <td>
                         @if($product->preview_image)
-                        <img src="{{ asset(  $product->preview_image ) }}" alt="Product image" class="img-responsive" style="width: 100px; height: 100px">
+                          <img src="{{ asset(  $product->preview_image ) }}" alt="Product image" class="img-responsive" style="width: 100px; height: 100px">
                         @else
                           <p>Без изоброжения</p>
                         @endif
@@ -73,13 +73,16 @@
                       </td>
                     </tr>
                   @empty
-                   <tr>
-                     <td colspan="12"> <h2 class="text-center">Пусто...</h2> </td>
-                   </tr>
+                    <tr>
+                      <td colspan="12"><h2 class="text-center">Пусто...</h2></td>
+                    </tr>
                   @endforelse
 
                   </tbody>
                 </table>
+                <div class="d-flex justify-content-end mr-3">
+                  {{ $products->links() }}
+                </div>
               </div>
               <!-- /.card-body -->
             </div>

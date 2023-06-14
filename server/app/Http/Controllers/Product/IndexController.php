@@ -8,19 +8,17 @@ use App\Models\Color;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Support\Benchmark;
-use Illuminate\Support\Str;
 
 class IndexController extends Controller
 {
 
   public function index()
   {
-/*    Benchmark::dd([
-      'withQuery' => fn() => Product::query()->orderByDesc('id')->get(),
-      'noQuery' => fn() => Product::orderByDesc('id')->get(),
-    ]);*/
-    $products = Product::orderByDesc('id')->get();
+    /*    Benchmark::dd([
+          'withQuery' => fn() => Product::query()->orderByDesc('id')->get(),
+          'noQuery' => fn() => Product::orderByDesc('id')->get(),
+        ]);*/
+    $products = Product::orderByDesc('id')->paginate(10);
 
     return view('products.index', compact('products'));
   }
@@ -36,8 +34,9 @@ class IndexController extends Controller
 
   public function store(Request $request)
   {
-    $data         = $request->validate([
+    $data = $request->validate([
       'category_id'   => 'required|integer',
+      'group_id'      => 'required|integer',
       'title'         => 'required|string',
       'description'   => 'required|string',
       'content'       => 'required|string',
@@ -48,7 +47,7 @@ class IndexController extends Controller
       'tags'          => 'nullable|array',
       'colors'        => 'nullable|array',
     ]);
-    $data['slug'] = Str::slug($data['title']);
+//    $data['slug'] = Str::slug($data['title']);
 
     if ($request->hasFile('preview_image')) {
       $preview_image         = $request->file('preview_image')->store('uploads', 'public');
@@ -81,8 +80,8 @@ class IndexController extends Controller
 
   public function update(Request $request, Product $product)
   {
-    $data         = $request->all();
-    $data['slug'] = Str::slug($data['title']);
+    $data = $request->all();
+//    $data['slug'] = Str::slug($data['title']);
     $product->update($data);
 
     $product->tags()->sync($data['tags']);

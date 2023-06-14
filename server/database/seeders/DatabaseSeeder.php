@@ -15,7 +15,11 @@ class DatabaseSeeder extends Seeder
       CategorySeeder::class,
       ColorSeeder::class,
       TagSeeder::class,
+      GroupSeeder::class,
     ]);
+    \App\Models\Product::factory(80)->create();
+    \App\Models\ColorProduct::factory(150)->create();
+    \App\Models\ProductTag::factory(150)->create();
 //    \App\Models\Category::factory(10)->create();
 
     // \App\Models\User::factory()->create([
