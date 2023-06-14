@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Tag;
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class IndexController extends Controller
 {
@@ -24,10 +23,10 @@ class IndexController extends Controller
 
   public function store(Request $request)
   {
-    $data         = $request->validate([
+    $data = $request->validate([
       'title' => 'required|string',
     ]);
-    $data['slug'] = Str::slug($data['title']);
+//    $data['slug'] = Str::slug($data['title']);
 
     Tag::firstOrCreate($data);
 
@@ -46,10 +45,10 @@ class IndexController extends Controller
 
   public function update(Request $request, Tag $tag)
   {
-    $data         = $request->validate([
+    $data = $request->validate([
       'title' => 'required|string',
     ]);
-    $data['slug'] = Str::slug($data['title']);
+//    $data['slug'] = Str::slug($data['title']);
 
     $tag->update($data);
 

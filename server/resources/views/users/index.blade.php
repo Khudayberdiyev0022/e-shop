@@ -67,9 +67,11 @@
                       <td colspan="7"><h2 class="text-center">Пусто...</h2></td>
                     </tr>
                   @endforelse
-
                   </tbody>
                 </table>
+                <div class="d-flex justify-content-end mr-3">
+                  {{ $users->links() }}
+                </div>
               </div>
               <!-- /.card-body -->
             </div>
