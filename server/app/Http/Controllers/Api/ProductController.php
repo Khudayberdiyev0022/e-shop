@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductIndexResource;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class ProductController extends Controller
     $products = Product::where('is_published', 1)->get();
 
 //    dd(ProductResource::collection($products));
-    return ProductResource::collection($products);
+    return ProductIndexResource::collection($products);
   }
 
   public function store(Request $request)
