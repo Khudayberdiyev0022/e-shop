@@ -13,6 +13,7 @@ class ProductController extends Controller
   public function index()
   {
     $products = Product::where('is_published', 1)->get();
+
 //    dd(ProductResource::collection($products));
     return ProductResource::collection($products);
   }
@@ -24,7 +25,7 @@ class ProductController extends Controller
 
   public function show(Product $product)
   {
-    //
+    return ProductResource::make($product);
   }
 
   public function update(Request $request, Product $product)
