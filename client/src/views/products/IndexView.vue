@@ -539,21 +539,18 @@
                                       <h6>In stuck</h6>
                                     </div>
                                     <div class="color-varient">
-                                      <a href="#0" class="color-name pink">
-                                        <span>Pink</span>
-                                      </a>
-                                      <a href="#0" class="color-name red">
-                                        <span>Red</span>
-                                      </a>
-                                      <a href="#0" class="color-name yellow"
-                                        ><span>Yellow</span>
-                                      </a>
-                                      <a href="#0" class="color-name blue">
-                                        <span>Blue</span>
-                                      </a>
-                                      <a href="#0" class="color-name black">
-                                        <span>Black</span>
-                                      </a>
+                                      <template
+                                        v-for="groupProduct in product.group_products"
+                                      >
+                                        <a
+                                          href="#0"
+                                          v-for="color in groupProduct.colors"
+                                          class="color-name"
+                                          :style="`background: ${color.hex_code}`"
+                                        >
+                                          <span>{{ color.title }}</span>
+                                        </a>
+                                      </template>
                                     </div>
                                     <div class="add-product">
                                       <h6>Qty:</h6>
