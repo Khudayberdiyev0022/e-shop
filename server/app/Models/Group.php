@@ -11,4 +11,9 @@ class Group extends Model
 
   protected $table    = 'groups';
   protected $fillable = ['title'];
+
+  public function products()
+  {
+    return $this->hasMany(Product::class);
+  }
 }
