@@ -34,11 +34,11 @@
                   @csrf
                   <div class="form-group">
                     <label>Название</label>
-                    <input type="text" name="title" class="form-control" />
+                    <input type="text" name="title" class="form-control"/>
                   </div>
                   <div class="form-group">
                     <label>Описание</label>
-                    <input type="text" name="description" class="form-control" />
+                    <input type="text" name="description" class="form-control"/>
                   </div>
                   <div class="form-group">
                     <label>Контент</label>
@@ -46,11 +46,11 @@
                   </div>
                   <div class="form-group">
                     <label>Цена</label>
-                    <input type="text" name="price" class="form-control" />
+                    <input type="text" name="price" class="form-control"/>
                   </div>
                   <div class="form-group">
                     <label>Количество</label>
-                    <input type="text" name="quantity" class="form-control" />
+                    <input type="text" name="quantity" class="form-control"/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">Загрузить изоброжения</label>
@@ -61,6 +61,50 @@
                       </div>
                       <div class="input-group-append">
                         <span class="input-group-text">Загрузить</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="exampleInputFile1">Загрузить изоброжения</label>
+                        <div class="input-group">
+                          <div class="custom-file">
+                            <input type="file" name="product_images[]" class="custom-file-input" id="exampleInputFile1">
+                            <label class="custom-file-label" for="exampleInputFile1">Choose file</label>
+                          </div>
+                          <div class="input-group-append">
+                            <span class="input-group-text">Загрузить</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="exampleInputFile2">Загрузить изоброжения</label>
+                        <div class="input-group">
+                          <div class="custom-file">
+                            <input type="file" name="product_images[]" class="custom-file-input" id="exampleInputFile2">
+                            <label class="custom-file-label" for="exampleInputFile2">Choose file</label>
+                          </div>
+                          <div class="input-group-append">
+                            <span class="input-group-text">Загрузить</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="exampleInputFile3">Загрузить изоброжения</label>
+                        <div class="input-group">
+                          <div class="custom-file">
+                            <input type="file" name="product_images[]" class="custom-file-input" id="exampleInputFile3">
+                            <label class="custom-file-label" for="exampleInputFile3">Choose file</label>
+                          </div>
+                          <div class="input-group-append">
+                            <span class="input-group-text">Загрузить</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -92,10 +136,10 @@
                       <div class="form-group">
                         <label>Цвета</label>
                         <div class="select2-purple">
-                          <select name="colors[]" class="colors select2-hidden-accessible" multiple data-placeholder="Выберите цвета" data-dropdown-css-class="select2-purple" style="width: 100%;" >
-                          @foreach($colors as $color)
-                            <option value="{{ $color->id }}">{{ $color->title }}</option>
-                          @endforeach
+                          <select name="colors[]" class="colors select2-hidden-accessible" multiple data-placeholder="Выберите цвета" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                            @foreach($colors as $color)
+                              <option value="{{ $color->id }}">{{ $color->title }}</option>
+                            @endforeach
                           </select>
                         </div>
                       </div>
@@ -103,7 +147,7 @@
                   </div>
                   <div class="form-group clearfix">
                     <div class="icheck-purple d-inline">
-                      <input type="checkbox" name="is_published" value="1" {{ old('is_published') == 1 ? 'checked' : '' }} id="checkboxPrimary1"  >
+                      <input type="checkbox" name="is_published" value="1" {{ old('is_published') == 1 ? 'checked' : '' }} id="checkboxPrimary1">
                       <label for="checkboxPrimary1">
                         Публиковать ?
                       </label>
