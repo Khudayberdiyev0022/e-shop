@@ -34,24 +34,32 @@ class IndexController extends Controller
 
   public function store(Request $request)
   {
+//    dd($request->all());
+
     $data = $request->validate([
-      'category_id'   => 'required|integer',
-      'group_id'      => 'required|integer',
-      'title'         => 'required|string',
-      'description'   => 'required|string',
-      'content'       => 'required|string',
-      'preview_image' => 'nullable|file',
-      'price'         => 'required',
-      'quantity'      => 'required',
-      'is_published'  => 'required',
-      'tags'          => 'nullable|array',
-      'colors'        => 'nullable|array',
+      'category_id'    => 'required|integer',
+      'group_id'       => 'required|integer',
+      'title'          => 'required|string',
+      'description'    => 'required|string',
+      'content'        => 'required|string',
+      'preview_image'  => 'nullable|file',
+      'price'          => 'required',
+      'quantity'       => 'required',
+      'is_published'   => 'required',
+      'tags'           => 'nullable|array',
+      'colors'         => 'nullable|array',
+      'product_images' => 'nullable|array',
     ]);
+
 //    $data['slug'] = Str::slug($data['title']);
 
     if ($request->hasFile('preview_image')) {
       $preview_image         = $request->file('preview_image')->store('uploads', 'public');
       $data['preview_image'] = 'storage/'.$preview_image;
+    }
+    if ($request->hasFile('product_images')) {
+      $product_images         = $request->file('product_images')->store('uploads', 'public');
+      $data['product_images'] = 'storage/'.$product_images;
     }
 
     $product = Product::firstOrCreate([
@@ -60,6 +68,7 @@ class IndexController extends Controller
 
     $product->tags()->attach($data['tags']);
     $product->colors()->attach($data['colors']);
+    $product->productImages()->attach($data['product_images']);
 
     return redirect()->route('products.index');
   }

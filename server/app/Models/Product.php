@@ -28,6 +28,11 @@ class Product extends Model
     return $this->belongsTo(Category::class);
   }
 
+  public function productImages()
+  {
+    return $this->belongsTo(ProductImage::class);
+  }
+
   public function getImageUrlAttribute()
   {
     if ($this->preview_image) {
